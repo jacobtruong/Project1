@@ -61,18 +61,6 @@ class PassAllTestsQuestion(Question):
         else:
             grades.assignFullCredit()
 
-class FailSomeTestsQuestion(Question):
-
-    def execute(self, grades):
-        testsFailed = False
-        grades.assignZeroCredit()
-        for _, f in self.testCases:
-            if not f(grades):
-                testsFailed = True
-        if testsFailed:
-            grades.fail("Tests failed. Discount applied")
-            grades.assignFullCredit()
-
 class ExtraCreditPassAllTestsQuestion(Question):
     def __init__(self, questionDict, display):
         Question.__init__(self, questionDict, display)

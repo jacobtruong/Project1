@@ -105,22 +105,22 @@ def depthFirstSearch(problem):
     while not stack.isEmpty():
         n, a = stack.pop()
 
-        # Add node to the visited node list
-        visited[n] = True
+        # If node has not been visited
+        if n not in visited:
+            # Add node to the visited node list
+            visited[n] = True
 
-        # If the current node is the goal state, return the steps (actions) to get here
-        if problem.isGoalState(n):
-            return a
+            # If the current node is the goal state, return the steps (actions) to get here
+            if problem.isGoalState(n):
+                return a
 
-        # Find each neighbour of n and add them into the stack along with the action list to get there
-        for neighbour in problem.getSuccessors(n):
+            # Find each neighbour of n and add them into the stack along with the action list to get there
+            for neighbour in problem.getSuccessors(n):
 
-            # The neighbour is a tuple of 3: the next node (a tuple of x and y), the direction, and the cost.
-            # ie: neighbour == ((5,4), 'West', 1)). In this case, cost is unused
-
-            # If node has not been visited
-            if neighbour[0] not in visited:
-                stack.push((neighbour[0], a + [neighbour[1]]))
+                # The neighbour is a tuple of 3: the next node (a tuple of x and y), the direction, and the cost.
+                # ie: neighbour == ((5,4), 'West', 1)). In this case, cost is unused
+                if neighbour[0] not in visited:
+                    stack.push((neighbour[0], a + [neighbour[1]]))
 
     util.raiseNotDefined()
 

@@ -10,8 +10,8 @@ West West West West West West West North West West West West West West
 West West West West West West West West West West West South West West
 West West West West West West West
 """
-solution_expanded_nodes: "260"
-solution_rev: """
+expanded_nodes: "260"
+rev_solution: """
 South South West West West West South South East East East East South
 South West West West West South South East East East East South South
 West West West West South South East East East East South South South
@@ -19,4 +19,4 @@ West West West West West West West North West West West West West West
 West West West West West West West West West West West South West West
 West West West West West West West
 """
-solution_rev_expanded_nodes: "260"
+rev_expanded_nodes: "260"

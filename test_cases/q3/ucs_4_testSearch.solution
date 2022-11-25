@@ -5,8 +5,8 @@
 solution: """
 West East East South South West West
 """
-solution_expanded_nodes: "14"
-solution_rev: """
+expanded_nodes: "14"
+rev_solution: """
 West East East South South West West
 """
-solution_rev_expanded_nodes: "13"
+rev_expanded_nodes: "13"

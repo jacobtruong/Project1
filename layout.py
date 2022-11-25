@@ -15,12 +15,10 @@
 from util import manhattanDistance
 from game import Grid
 import os
-import sys
 import random
 from functools import reduce
 
 VISIBILITY_MATRIX_CACHE = {}
-DIR_SCRIPT = sys.path[0]
 
 class Layout:
     """
@@ -131,21 +129,18 @@ class Layout:
         elif layoutChar in  ['1', '2', '3', '4']:
             self.agentPositions.append( (int(layoutChar), (x,y)))
             self.numGhosts += 1
-
-def getLayout(name, back=2):
+def getLayout(name, back = 2):
     if name.endswith('.lay'):
-        layout = tryToLoad(os.path.join(DIR_SCRIPT, 'layouts/', name))  # SS: adapted to run autograder from anywhere
-        if layout == None:
-            layout = tryToLoad(name)
+        layout = tryToLoad('layouts/' + name)
+        if layout == None: layout = tryToLoad(name)
     else:
-        layout = tryToLoad(os.path.join(DIR_SCRIPT, 'layouts/', f'{name}.lay')) # SS: adapted to run autograder from anywhere
-        if layout == None:
-            layout = tryToLoad(f'{name}.lay')
+        layout = tryToLoad('layouts/' + name + '.lay')
+        if layout == None: layout = tryToLoad(name + '.lay')
     if layout == None and back >= 0:
-        curdir = os.path.abspath('.')   # save current folder
+        curdir = os.path.abspath('.')
         os.chdir('..')
-        layout = getLayout(name, back - 1)
-        os.chdir(curdir)    # restore current folder
+        layout = getLayout(name, back -1)
+        os.chdir(curdir)
     return layout
 
 def tryToLoad(fullname):

@@ -2,10 +2,10 @@ class: "GraphSearchTest"
 algorithm: "depthFirstSearch"
 
 diagram: """
- B
+ B   
  ^
  |
-*A --> C --> [G]
+*A --> C --> G
  |
  V
  D

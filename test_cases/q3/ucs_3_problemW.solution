@@ -16,8 +16,8 @@ North East East East East East North North East East East East East
 East South South West West West West South South West West West West
 West South West West West West West West West West West
 """
-solution_expanded_nodes: "173"
-solution_rev: """
+expanded_nodes: "173"
+rev_solution: """
 West West West West West West West West West West West West West West
 West West West West West West West West West West West West West West
 West West West West West South South South South South South South
@@ -31,4 +31,4 @@ North East East East East East North North East East East East East
 East South South West West West West South South West West West West
 West South West West West West West West West West West
 """
-solution_rev_expanded_nodes: "173"
+rev_expanded_nodes: "173"
