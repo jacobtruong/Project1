@@ -299,6 +299,7 @@ class CornersProblem(search.SearchProblem):
         space)
         """
         "*** YOUR CODE HERE ***"
+        return (self.startingPosition, [])
         util.raiseNotDefined()
 
     def isGoalState(self, state: Any):
@@ -306,6 +307,21 @@ class CornersProblem(search.SearchProblem):
         Returns whether this search state is a goal state of the problem.
         """
         "*** YOUR CODE HERE ***"
+
+        pos = state[0]
+        cornersVisisted = state[1]
+
+        if pos in self.corners:
+            # Since the nextNode would have already been added into cornersVisited, the code below is probably redundant
+            # if pos not in cornersVisisted:
+            #     cornersVisisted.append(pos)
+            if len(cornersVisisted) == 4:
+                return True
+            else:
+                return False
+        else:
+            return False
+
         util.raiseNotDefined()
 
     def getSuccessors(self, state: Any):
@@ -318,17 +334,32 @@ class CornersProblem(search.SearchProblem):
             state, 'action' is the action required to get there, and 'stepCost'
             is the incremental cost of expanding to that successor
         """
+        pos = state[0]
+        x, y = pos[0], pos[1]
+        cornersVisited = state[1]
 
         successors = []
         for action in [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]:
             # Add a successor state to the successor list if the action is legal
             # Here's a code snippet for figuring out whether a new position hits a wall:
-            #   x,y = currentPosition
-            #   dx, dy = Actions.directionToVector(action)
-            #   nextx, nexty = int(x + dx), int(y + dy)
-            #   hitsWall = self.walls[nextx][nexty]
+            dx, dy = Actions.directionToVector(action)
+            nextx, nexty = int(x + dx), int(y + dy)
+            hitsWall = self.walls[nextx][nexty]
 
             "*** YOUR CODE HERE ***"
+            if hitsWall == False:
+                nextNode = (nextx, nexty)
+
+                # Copying the list of corners visited so that the original list is not modified
+                cornersVisitedCopied = list(cornersVisited)
+
+                # If nextNode is a corner AND it has not been visited, add it to the copy of the list of corners visited
+                if nextNode in self.corners and nextNode not in cornersVisited:
+                        cornersVisitedCopied.append(nextNode)
+
+
+                successors.append(((nextNode, cornersVisitedCopied), action, 1))
+
 
         self._expanded += 1 # DO NOT CHANGE
         return successors

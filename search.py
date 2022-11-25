@@ -89,8 +89,9 @@ def depthFirstSearch(problem):
     """
     "*** YOUR CODE HERE ***"
 
+    # Dictionary was attempted to be used first, but it complicates the process of checking for different problems types
     # Create an empty list of visited node
-    visited = {}
+    visited = []
 
     # Get first node
     node = problem.getStartState()
@@ -108,7 +109,7 @@ def depthFirstSearch(problem):
         # If node has not been visited
         if n not in visited:
             # Add node to the visited node list
-            visited[n] = True
+            visited.append(n)
 
             # If the current node is the goal state, return the steps (actions) to get here
             if problem.isGoalState(n):
@@ -129,8 +130,9 @@ def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE ***"
 
+    # Dictionary was attempted to be used first, but it complicates the process of checking for different problems types
     # Create an empty list of visited node
-    visited = {}
+    visited = []
 
     # Get first node
     node = problem.getStartState()
@@ -141,6 +143,7 @@ def breadthFirstSearch(problem):
     # Push into the queue the initial start node and empty action list
     queue.push((node, []))
 
+
     # While queue is not empty, continue traversing
     while not queue.isEmpty():
         n, a = queue.pop()
@@ -148,7 +151,7 @@ def breadthFirstSearch(problem):
         # If node has not been visited
         if n not in visited:
             # Add node to the visited node list
-            visited[n] = True
+            visited.append(n)
 
             # If the current node is the goal state, return the steps (actions) to get here
             if problem.isGoalState(n):
@@ -161,6 +164,7 @@ def breadthFirstSearch(problem):
                 # ie: neighbour == ((5,4), 'West', 1)). In this case, cost is unused
                     queue.push((neighbour[0], a + [neighbour[1]]))
 
+
     util.raiseNotDefined()
 
 
@@ -168,8 +172,9 @@ def uniformCostSearch(problem):
     """Search the node of least total cost first."""
     "*** YOUR CODE HERE ***"
 
+    # Dictionary was attempted to be used first, but it complicates the process of checking for different problems types
     # Create an empty list of visited node
-    visited = {}
+    visited = []
 
     # Get first node
     node = problem.getStartState()
@@ -187,7 +192,7 @@ def uniformCostSearch(problem):
         # If node has not been visited
         if n not in visited:
             # Add node to the visited node list
-            visited[n] = True
+            visited.append(n)
 
             # If the current node is the goal state, return the steps (actions) to get here
             if problem.isGoalState(n):
@@ -214,8 +219,9 @@ def aStarSearch(problem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
     "*** YOUR CODE HERE ***"
 
+    # Dictionary was attempted to be used first, but it complicates the process of checking for different problems types
     # Create an empty list of visited node
-    visited = {}
+    visited = []
 
     # Get first node
     node = problem.getStartState()
@@ -234,7 +240,7 @@ def aStarSearch(problem, heuristic=nullHeuristic):
         # If node has not been visited
         if n not in visited:
             # Add node to the visited node list
-            visited[n] = True
+            visited.append(n)
 
             # If the current node is the goal state, return the steps (actions) to get here
             if problem.isGoalState(n):
